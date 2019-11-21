@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using RoomReservation.Entities;
 using RoomReservation.Entities.Exceptions;
 
@@ -14,9 +15,9 @@ namespace RoomReservation
                 Console.Write("Room number: ");
                 int number = int.Parse(Console.ReadLine());
                 Console.Write("Check-in date (dd/MM/yyyy): ");
-                DateTime checkIn = DateTime.Parse(Console.ReadLine());
+                DateTime checkIn = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.Write("Check-out date (dd/MM/yyyy): ");
-                DateTime checkOut = DateTime.Parse(Console.ReadLine());
+                DateTime checkOut = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 Reservation reservation = new Reservation(number, checkIn, checkOut);
                 Console.WriteLine("Reservation: " + reservation);
@@ -24,9 +25,9 @@ namespace RoomReservation
                 Console.WriteLine();
                 Console.WriteLine("Enter data to update the reservation:");
                 Console.Write("Check-in date (dd/MM/yyyy): ");
-                checkIn = DateTime.Parse(Console.ReadLine());
+                checkIn = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
                 Console.Write("Check-out date (dd/MM/yyyy): ");
-                checkOut = DateTime.Parse(Console.ReadLine());
+                checkOut = DateTime.ParseExact(Console.ReadLine(), "dd/MM/yyyy", CultureInfo.InvariantCulture);
 
                 reservation.UpdateDates(checkIn, checkOut);
                 Console.WriteLine("Reservation: " + reservation);
